@@ -1,0 +1,46 @@
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Editors / IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# Logs & debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencies / build (if added later)
+node_modules/
+dist/
+build/
+.cache/
+.parcel-cache/
+.vite/
+.next/
+out/
+
+# Temp / misc
+*.tmp
+*.temp
+.temp/
+tmp/
+.local/
