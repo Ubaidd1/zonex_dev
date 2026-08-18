@@ -1,0 +1,20 @@
+{
+  "name": "zonexdev",
+  "version": "1.0.0",
+  "description": "ZonexDev — Full Multi-Page Website with Clean URL Routing",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "serve": "node server.js"
+  },
+  "keywords": [
+    "zonexdev",
+    "agency",
+    "design",
+    "development"
+  ],
+  "author": "ZonexDev",
+  "license": "UNLICENSED",
+  "private": true
+}

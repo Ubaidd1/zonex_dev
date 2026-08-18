@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "routes": [
+    {
+      "src": "/company",
+      "dest": "/about/index.html"
+    },
+    {
+      "src": "/company/",
+      "dest": "/about/index.html"
+    },
+    {
+      "handle": "filesystem"
+    }
+  ]
+}
