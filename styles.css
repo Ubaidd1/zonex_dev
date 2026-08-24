@@ -1578,7 +1578,7 @@ body.motion-ready .reveal-up.is-visible { opacity: 1; transform: translateY(0); 
 }
 .preloader-inner { position: relative; display: grid; justify-items: center; gap: 14px; }
 .preloader-word {
-  font-size: clamp(20px, 2.2vw, 34px);
+  font-size: clamp(32px, 6vw, 84px);
   line-height: 1;
   font-weight: 600;
   letter-spacing: .22em;
@@ -1802,7 +1802,7 @@ body.is-preloading { overflow: hidden; }
 }
 
 @media (max-width: 767px) {
-  .site-preloader .preloader-word { font-size: 18px; letter-spacing: .18em; text-indent: .18em; }
+  .site-preloader .preloader-word { letter-spacing: .18em; text-indent: .18em; }
   .page-hero + section,
   .case-hero + section { margin-top: -38px; border-radius: 26px 26px 0 0; }
   .page-hero-grid { padding-bottom: 92px; }
@@ -2044,7 +2044,7 @@ body[data-page="contact"] .contact-form .button-dark i {
   .page-orbit-stage { width: clamp(132px, 28vw, 185px) !important; }
 }
 @media (max-width: 560px) {
-  .preloader-word { font-size: clamp(42px, 15vw, 68px) !important; }
+
   body[data-page="contact"] .contact-form { padding: 22px; border-radius: 22px; }
   .service-picker { gap: 5px; }
   .service-picker span { min-height: 32px; padding: 0 10px; }
