@@ -703,6 +703,20 @@ body.motion-ready .reveal-up.is-visible { opacity: 1; transform: translateY(0); 
   color: #fff !important;
 }
 
+@keyframes detailsReveal {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.mobile-menu details[open] a { animation: detailsReveal 0.28s var(--ease) both; }
+.mobile-menu details[open] a:nth-of-type(1) { animation-delay: 0.03s; }
+.mobile-menu details[open] a:nth-of-type(2) { animation-delay: 0.06s; }
+.mobile-menu details[open] a:nth-of-type(3) { animation-delay: 0.09s; }
+.mobile-menu details[open] a:nth-of-type(4) { animation-delay: 0.12s; }
+.mobile-menu details[open] a:nth-of-type(5) { animation-delay: 0.15s; }
+.mobile-menu details[open] a:nth-of-type(6) { animation-delay: 0.18s; }
+.mobile-menu details[open] a:nth-of-type(7) { animation-delay: 0.21s; }
+.mobile-menu details[open] a:nth-of-type(8) { animation-delay: 0.24s; }
+
 .mobile-menu-foot {
   margin-top: auto;
   padding: 24px 0 8px;
