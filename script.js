@@ -73,7 +73,17 @@
   const setMobileMenu = (open) => {
     if (!menuToggle || !mobileMenu) return;
     menuToggle.setAttribute('aria-expanded', String(open));
-    mobileMenu.hidden = !open;
+    if (open) {
+      mobileMenu.hidden = false;
+      requestAnimationFrame(() => mobileMenu.classList.add('is-active'));
+    } else {
+      mobileMenu.classList.remove('is-active');
+      setTimeout(() => {
+        if (menuToggle.getAttribute('aria-expanded') !== 'true') {
+          mobileMenu.hidden = true;
+        }
+      }, 300);
+    }
     body.classList.toggle('menu-open', open);
   };
   menuToggle?.addEventListener('click', () => setMobileMenu(menuToggle.getAttribute('aria-expanded') !== 'true'));

@@ -69,6 +69,15 @@ img { display: block; width: 100%; }
   color: white;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-12px);
+  transition: opacity .32s var(--ease), transform .32s var(--ease), visibility .32s;
+}
+.mobile-menu.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 .mobile-menu[hidden] { display: none !important; }
 .mobile-menu nav { display: flex; flex-direction: column; }
