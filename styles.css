@@ -315,10 +315,11 @@ img { display: block; width: 100%; }
   :root { --shell: calc(100vw - 24px); }
   .site-header.is-scrolled { width: calc(100vw - 16px); }
   .brand-name { font-size: 11px; }
-  .hero { min-height: 820px; }
-  .hero-inner { padding-top: 190px; }
+  .hero { min-height: 100svh; }
+  .hero-inner { padding-top: 150px; padding-bottom: 120px; }
   .hero-title { font-size: clamp(58px, 18vw, 86px); }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 18px; }
+  .orbit-badge { right: 18px; bottom: 28px; width: clamp(84px, 24vw, 118px); }
   .about-card { padding-top: 72px; }
   .about-grid { gap: 40px; padding-bottom: 50px; }
   .principles-grid { grid-template-columns: 1fr; }
@@ -624,14 +625,20 @@ body.motion-ready .reveal-up.is-visible { opacity: 1; transform: translateY(0); 
   flex-direction: column;
   gap: 0;
 }
-.mobile-menu details {
+.mobile-menu-item,
+.mobile-menu .mobile-nav-item {
   border-bottom: 1px solid rgba(255,255,255,.09);
 }
-.mobile-menu details[open] {
+.mobile-menu .mobile-nav-item.is-open {
   padding-bottom: 10px;
 }
+.mobile-menu .mobile-nav-row {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
 .mobile-menu > .mobile-menu-inner > nav > a,
-.mobile-menu summary {
+.mobile-menu .mobile-nav-link {
   list-style: none;
   cursor: pointer;
   padding: 15px 0;
@@ -641,21 +648,32 @@ body.motion-ready .reveal-up.is-visible { opacity: 1; transform: translateY(0); 
   letter-spacing: -.03em;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(255,255,255,.09);
+  flex: 1 1 auto;
+  min-width: 0;
   color: #ffffff;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
   transition: color .2s ease, padding-left .2s ease;
 }
-.mobile-menu summary {
+.mobile-menu .mobile-nav-row .mobile-nav-link {
   border-bottom: 0;
 }
 .mobile-menu > .mobile-menu-inner > nav > a:active,
-.mobile-menu summary:active {
+.mobile-menu .mobile-nav-link:active {
   color: #5c7eff;
 }
-.mobile-menu summary::after {
+.mobile-menu .mobile-nav-toggle {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.mobile-menu .mobile-nav-toggle::after {
   content: "+";
   font-size: clamp(20px, 5.5vw, 28px);
   font-weight: 300;
@@ -663,14 +681,29 @@ body.motion-ready .reveal-up.is-visible { opacity: 1; transform: translateY(0); 
   color: rgba(255,255,255,.45);
   transition: transform .22s ease, color .22s ease;
 }
-.mobile-menu details[open] summary::after {
+.mobile-menu .mobile-nav-toggle:hover::after,
+.mobile-menu .mobile-nav-toggle:focus-visible::after {
+  color: #fff;
+}
+.mobile-menu .mobile-nav-item.is-open .mobile-nav-toggle::after {
   transform: rotate(45deg);
   color: #fff;
 }
-.mobile-menu summary::-webkit-details-marker { display: none; }
 
-/* Sublinks inside expanded details */
-.mobile-menu details a {
+/* Sublinks inside expanded submenu */
+.mobile-menu .mobile-submenu {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .3s var(--ease);
+}
+.mobile-menu .mobile-nav-item.is-open .mobile-submenu {
+  grid-template-rows: 1fr;
+}
+.mobile-menu .mobile-submenu-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+.mobile-menu .mobile-submenu a {
   display: flex !important;
   align-items: center;
   justify-content: space-between;
@@ -687,35 +720,21 @@ body.motion-ready .reveal-up.is-visible { opacity: 1; transform: translateY(0); 
   text-decoration: none;
   transition: background .2s, color .2s, transform .2s;
 }
-.mobile-menu details a::after {
+.mobile-menu .mobile-submenu a::after {
   content: "↗";
   font-size: 12px;
   color: rgba(255,255,255,.32);
 }
-.mobile-menu details a:active,
-.mobile-menu details a:hover {
+.mobile-menu .mobile-submenu a:active,
+.mobile-menu .mobile-submenu a:hover {
   background: rgba(255,255,255,.09);
   color: #fff !important;
 }
-.mobile-menu details a.is-active {
+.mobile-menu .mobile-submenu a.is-active {
   background: rgba(70,95,255,.18);
   border-left: 2px solid #5a7dff;
   color: #fff !important;
 }
-
-@keyframes detailsReveal {
-  from { opacity: 0; transform: translateY(-6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.mobile-menu details[open] a { animation: detailsReveal 0.28s var(--ease) both; }
-.mobile-menu details[open] a:nth-of-type(1) { animation-delay: 0.03s; }
-.mobile-menu details[open] a:nth-of-type(2) { animation-delay: 0.06s; }
-.mobile-menu details[open] a:nth-of-type(3) { animation-delay: 0.09s; }
-.mobile-menu details[open] a:nth-of-type(4) { animation-delay: 0.12s; }
-.mobile-menu details[open] a:nth-of-type(5) { animation-delay: 0.15s; }
-.mobile-menu details[open] a:nth-of-type(6) { animation-delay: 0.18s; }
-.mobile-menu details[open] a:nth-of-type(7) { animation-delay: 0.21s; }
-.mobile-menu details[open] a:nth-of-type(8) { animation-delay: 0.24s; }
 
 .mobile-menu-foot {
   margin-top: auto;
@@ -1464,8 +1483,8 @@ body.motion-ready .reveal-up.is-visible { opacity: 1; transform: translateY(0); 
   .mobile-menu { padding: 82px 18px 24px; background: #05070d; }
   .mobile-menu-inner { min-height: calc(100svh - 106px); }
   .mobile-menu > .mobile-menu-inner > nav > a,
-  .mobile-menu summary { font-size: clamp(20px, 6.2vw, 26px); padding: 12px 0; }
-  .mobile-menu details a { padding: 13px 12px 13px 14px !important; font-size: 14px !important; }
+  .mobile-menu .mobile-nav-link { font-size: clamp(20px, 6.2vw, 26px); padding: 12px 0; }
+  .mobile-menu .mobile-submenu a { padding: 13px 12px 13px 14px !important; font-size: 14px !important; }
   .hero { min-height: 790px; }
   .hero-inner { width: calc(100vw - 32px); padding-top: 170px; padding-bottom: 170px; }
   .hero-title { font-size: clamp(54px,17vw,78px); line-height: .88; }
@@ -1515,8 +1534,8 @@ body.motion-ready .reveal-up.is-visible { opacity: 1; transform: translateY(0); 
 @media (max-width: 380px) {
   .mobile-menu { padding: 76px 14px 20px; }
   .mobile-menu > .mobile-menu-inner > nav > a,
-  .mobile-menu summary { font-size: 19px; padding: 10px 0; }
-  .mobile-menu details a { padding: 12px 10px !important; font-size: 13px !important; }
+  .mobile-menu .mobile-nav-link { font-size: 19px; padding: 10px 0; }
+  .mobile-menu .mobile-submenu a { padding: 12px 10px !important; font-size: 13px !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1573,7 +1592,7 @@ body.motion-ready .reveal-up.is-visible { opacity: 1; transform: translateY(0); 
 .careers-call {
   background: radial-gradient(760px 480px at 12% 12%, rgba(75,95,255,.13), transparent 74%), #05060a;
 }
-.mobile-menu details a { border-bottom: 0; }
+.mobile-menu .mobile-submenu a { border-bottom: 0; }
 .mega-shell { top: 68px; }
 .signal-beam.b1 { --beam-rot: 22deg; }
 .signal-beam.b2 { --beam-rot: 0deg; }

@@ -89,6 +89,26 @@
   menuToggle?.addEventListener('click', () => setMobileMenu(menuToggle.getAttribute('aria-expanded') !== 'true'));
 
   /* -------------------------------------------------------
+     Mobile nav submenus (tap label to navigate, tap the
+     caret to expand/collapse — the two never overlap)
+     ------------------------------------------------------- */
+  qsa('.mobile-nav-toggle').forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      const item = toggle.closest('.mobile-nav-item');
+      if (!item) return;
+      const willOpen = !item.classList.contains('is-open');
+      qsa('.mobile-nav-item.is-open').forEach((openItem) => {
+        if (openItem !== item) {
+          openItem.classList.remove('is-open');
+          openItem.querySelector('.mobile-nav-toggle')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+      item.classList.toggle('is-open', willOpen);
+      toggle.setAttribute('aria-expanded', String(willOpen));
+    });
+  });
+
+  /* -------------------------------------------------------
      Desktop mega menu
      ------------------------------------------------------- */
   const megaShell = qs('[data-mega-shell]');
@@ -376,11 +396,12 @@
      Homepage service tabs
      ------------------------------------------------------- */
   const serviceContent = {
-    brand: ['01 / 05', 'Identity that feels unmistakably yours.', 'Positioning, visual language, typography and scalable brand systems designed to stay coherent across every touchpoint.'],
-    design: ['02 / 05', 'Interfaces that make the complex feel simple.', 'High-impact web design, product UI and content systems that give every screen hierarchy, rhythm and a clear next action.'],
-    research: ['03 / 05', 'Decisions grounded in what users actually need.', 'Competitive reviews, customer patterns, content architecture and UX insights that remove assumptions before design begins.'],
-    strategy: ['04 / 05', 'A digital roadmap built around momentum.', 'We connect positioning, narrative, conversion goals and product priorities so design choices support the business direction.'],
-    dev: ['05 / 05', 'Development that preserves the design idea.', 'Responsive front-end builds, performant motion and interaction details engineered to feel polished without becoming fragile.']
+    mobile: ['01 / 06', 'Mobile apps engineered for real users, not just demos.', 'Native and cross-platform apps built on solid architecture, clean UI and reliable performance across devices and OS versions.'],
+    web: ['02 / 06', 'Web platforms built front-to-back, not just front-end.', 'Full-stack engineering across interface, application logic, APIs, databases and infrastructure for products that need to hold up under real usage.'],
+    ai: ['03 / 06', 'Machine learning that ships inside real products.', 'Applied AI and ML engineering, from model selection and evaluation to deployment, monitoring and integration into production systems.'],
+    data: ['04 / 06', 'Data that turns into decisions, not just dashboards.', 'Statistical modeling, forecasting, pipelines and reporting that give teams metrics they can actually act on.'],
+    qa: ['05 / 06', 'Quality assurance that catches issues before users do.', 'Manual and automated testing, test strategy and release gates built to protect quality without slowing releases down.'],
+    marketing: ['06 / 06', 'Growth and visibility tied to measurable outcomes.', 'Marketing, SEO and social strategy connected to the metrics that actually move the business forward.']
   };
 
   const initServiceTabs = () => {
