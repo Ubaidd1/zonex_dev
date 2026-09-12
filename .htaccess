@@ -9,8 +9,6 @@ RewriteRule ^home/?$ / [R=301,L]
 RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html(?:[?\s]) [NC]
 RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
 
-# Redirect /company to /company/ or /about/ if needed
-RewriteRule ^company/?$ /company/ [R=301,L]
 
 # Serve clean URLs without extension if a directory with index.html exists
 RewriteCond %{REQUEST_FILENAME} !-f

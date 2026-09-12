@@ -2,27 +2,26 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
-  "routes": [
+  "redirects": [
     {
-      "src": "^/home/?$",
-      "status": 301,
-      "headers": { "Location": "/" }
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
     },
     {
-      "src": "/company",
-      "dest": "/about/index.html"
+      "source": "/home/",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/company",
+      "destination": "/company/index.html"
     },
     {
-      "src": "/company/",
-      "dest": "/about/index.html"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "status": 404,
-      "dest": "/404.html"
+      "source": "/company/",
+      "destination": "/company/index.html"
     }
   ]
 }

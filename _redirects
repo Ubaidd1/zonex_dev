@@ -2,9 +2,8 @@
 /home           /               301!
 /home/          /               301!
 
-# Redirect /company to /company/ or /about/
-/company        /company/       301
-/company/index.html /company/   301!
+# Redirect clean URL for company/index.html
+/company/index.html /company    301!
 
 # Redirect /index.html and any folder/index.html to clean URL routes
 /index.html     /               301!
