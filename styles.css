@@ -2113,13 +2113,18 @@ body[data-page="contact"] .contact-form .button-dark i {
   min-height: inherit;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: clamp(130px, 16vh, 160px);
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  padding-top: clamp(160px, 20vh, 230px);
   padding-bottom: clamp(100px, 12vh, 130px);
 }
 .page-hero-copy {
   max-width: 940px;
   padding-right: clamp(150px, 15vw, 230px);
+  text-align: left !important;
+  align-self: flex-start !important;
+  margin-left: 0 !important;
 }
 .page-hero-art {
   position: absolute !important;
@@ -2289,6 +2294,9 @@ body[data-page="contact"] .contact-form .button-dark i { background: #07090e !im
     margin-bottom: clamp(28px, 4.5vh, 48px);
   }
   .page-hero-grid {
+    align-items: flex-start !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
     padding-top: clamp(130px, 16vh, 155px);
     padding-bottom: clamp(140px, 18vh, 175px) !important;
   }
@@ -2315,8 +2323,12 @@ body[data-page="contact"] .contact-form .button-dark i { background: #07090e !im
 @media (max-width: 560px) {
   .page-hero {
     min-height: clamp(520px, 72svh, 640px);
+    justify-content: flex-start !important;
   }
   .page-hero-grid {
+    align-items: flex-start !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
     padding-top: clamp(120px, 14vh, 140px);
     padding-bottom: clamp(130px, 16vh, 160px) !important;
   }

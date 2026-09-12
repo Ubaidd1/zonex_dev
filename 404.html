@@ -83,40 +83,42 @@
 </div>
 
 <main id="main">
-<section class="page-hero dark-section not-found-hero">
-<div class="hero-noise"></div>
-<div aria-hidden="true" class="orbit-line page-orbit-line-a"></div>
-<div aria-hidden="true" class="orbit-line page-orbit-line-b"></div>
-<div class="page-hero-grid section-shell">
-<div class="page-hero-copy">
-<span class="eyebrow-dot reveal-safe" data-reveal="">404 • Route Not Found</span>
-<h1 class="display-title split-lines reveal-safe">Lost in the Digital Void.</h1>
-<p class="reveal-safe" data-reveal="">The page or route you requested doesn't exist, has been moved, or may never have been deployed. Let's guide you back to where ideas become reality.</p>
-<div class="hero-actions reveal-safe" data-reveal="" style="display: flex; align-items: center; gap: 20px; margin-top: 34px; flex-wrap: wrap;">
+<section aria-labelledby="hero-title" class="hero not-found-hero">
+<canvas aria-hidden="true" id="starfield"></canvas>
+<div aria-hidden="true" class="hero-glow hero-glow-a"></div>
+<div aria-hidden="true" class="hero-glow hero-glow-b"></div>
+<div aria-hidden="true" class="orbit-line orbit-line-a"></div>
+<div aria-hidden="true" class="orbit-line orbit-line-b"></div>
+<div class="hero-inner">
+<div class="eyebrow reveal-up">✦ 404 Error • Route Not Found</div>
+<h1 class="hero-title split-reveal" id="hero-title">Lost in the<br/>Digital Void.</h1>
+<p class="hero-copy reveal-up">The page or route you requested doesn't exist, has been moved, or may never have been deployed. Let's guide you back to where ideas become reality.</p>
+<div class="hero-actions reveal-up">
 <a class="button button-light magnetic" href="/"><span>Return to Homepage</span><i aria-hidden="true">↗</i></a>
-<a class="text-link" href="/contact"><span>Start a project</span><span aria-hidden="true">→</span></a>
+<a class="text-link" href="/contact">Start a project <span aria-hidden="true">→</span></a>
 </div>
 </div>
-<div class="page-hero-art">
-<div aria-hidden="true" class="page-orbit-stage">
+<div aria-hidden="true" class="orbit-badge">
 <svg role="presentation" viewbox="0 0 160 160">
-<defs><path d="M80,80 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0" id="pageOrbitPath-404-html"></path></defs>
-<text><textpath href="#pageOrbitPath-404-html" lengthadjust="spacing" textlength="364">ZONEXDEV • 404 • ROUTE NOT FOUND • RETURN HOME • 2026 •</textpath></text>
-<path class="page-orbit-spark" d="M80 56 L86 74 L104 80 L86 86 L80 104 L74 86 L56 80 L74 74 Z"></path>
+<defs><path d="M80,80 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0" id="orbitPath404"></path></defs>
+<text><textpath href="#orbitPath404" lengthadjust="spacing" textlength="364">ZONEXDEV • 404 • ROUTE NOT FOUND • RETURN HOME • 2026 •</textpath></text>
+<path class="spark" d="M80 56 L86 74 L104 80 L86 86 L80 104 L74 86 L56 80 L74 74 Z"></path>
 </svg>
 </div>
-</div>
-</div>
-<div aria-hidden="true" class="page-scroll-cue"><span>Scroll to explore</span><i>↓</i></div>
+<a class="scroll-cue" href="#destinations"><span>Scroll to discover</span><i aria-hidden="true">↓</i></a>
 </section>
 
-<section class="editorial-section">
-<div class="section-shell">
-<div class="section-heading reveal-safe" data-reveal="" style="margin-bottom: 48px;">
-<div><span class="eyebrow-dot">Navigation Pathways</span><h2>Where would you like to head?</h2></div>
-<p class="section-context">Here are the most frequently visited areas of our platform to help you find what you need without missing a beat.</p>
+<section class="about-card editorial-section" id="destinations">
+<div class="about-grid" style="border-bottom: 0; padding-bottom: 30px;">
+<div class="about-intro reveal-up">
+<span aria-hidden="true" class="tiny-mark">✦</span>
+<h2>Navigation Pathways:<br/>Where to Next?</h2>
 </div>
-<div class="signal-grid reveal-safe" data-reveal="">
+<div class="about-copy reveal-up">
+<p>Here are the most frequently visited areas of our platform to help you find what you need without missing a beat.</p>
+</div>
+</div>
+<div class="signal-grid reveal-safe" data-reveal="" style="margin-top: 20px;">
 <a class="signal-card" href="/services" style="text-decoration: none; color: inherit; display: block;">
 <span>01</span>
 <h3>Capabilities &amp; Services</h3>
@@ -141,7 +143,6 @@
 <p>Tell us what is changing, where the friction is, and what a successful launch needs to make possible.</p>
 <i aria-hidden="true"></i>
 </a>
-</div>
 </div>
 </section>
 
