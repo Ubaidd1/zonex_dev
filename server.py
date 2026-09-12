@@ -91,6 +91,7 @@ class CleanRouteHTTPHandler(http.server.SimpleHTTPRequestHandler):
                 return
         super().send_error(code, message, explain)
 
+
 def run():
     port = PORT
     while True:
