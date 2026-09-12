@@ -1,3 +1,7 @@
+# Redirect /home to /
+/home           /               301!
+/home/          /               301!
+
 # Redirect /company to /company/ or /about/
 /company        /company/       301
 /company/index.html /company/   301!

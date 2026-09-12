@@ -4,6 +4,11 @@
   "trailingSlash": false,
   "routes": [
     {
+      "src": "^/home/?$",
+      "status": 301,
+      "headers": { "Location": "/" }
+    },
+    {
       "src": "/company",
       "dest": "/about/index.html"
     },

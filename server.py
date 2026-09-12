@@ -73,6 +73,24 @@ class CleanRouteHTTPHandler(http.server.SimpleHTTPRequestHandler):
 
         return target
 
+    def do_GET(self):
+        clean_path = self.path.split('?', 1)[0].split('#', 1)[0].rstrip('/')
+        if clean_path == '/home':
+            self.send_response(301)
+            self.send_header('Location', '/')
+            self.end_headers()
+            return
+        super().do_GET()
+
+    def do_HEAD(self):
+        clean_path = self.path.split('?', 1)[0].split('#', 1)[0].rstrip('/')
+        if clean_path == '/home':
+            self.send_response(301)
+            self.send_header('Location', '/')
+            self.end_headers()
+            return
+        super().do_HEAD()
+
     def end_headers(self):
         self.send_header('X-Content-Type-Options', 'nosniff')
         self.send_header('X-Frame-Options', 'DENY')

@@ -73,6 +73,13 @@ const server = http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url);
   const pathname = parsedUrl.pathname || '/';
 
+  // Redirect /home to /
+  if (pathname === '/home' || pathname === '/home/') {
+    res.writeHead(301, { 'Location': '/' });
+    res.end();
+    return;
+  }
+
   // Log incoming requests
   const timestamp = new Date().toISOString().split('T')[1].split('.')[0];
 

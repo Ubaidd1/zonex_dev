@@ -2,6 +2,9 @@ DirectoryIndex index.html
 
 RewriteEngine On
 
+# Redirect /home to /
+RewriteRule ^home/?$ / [R=301,L]
+
 # Redirect /index.html and any folder/index.html to clean URL
 RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html(?:[?\s]) [NC]
 RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
