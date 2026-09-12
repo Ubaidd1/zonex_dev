@@ -1436,8 +1436,8 @@ body.motion-ready .reveal-up.is-visible { opacity: 1; transform: translateY(0); 
   :root { --shell: calc(100vw - 36px); --page-pad: 82px; --page-pad-sm: 64px; }
   .header-cta { display: none; }
   .mega-shell { display: none !important; }
-  .page-hero { min-height: auto; }
-  .page-hero-grid { grid-template-columns: 1fr; gap: 42px; padding-top: 142px; padding-bottom: 105px; }
+  .page-hero { min-height: clamp(560px, 76svh, 720px); }
+  .page-hero-grid { grid-template-columns: 1fr; gap: 42px; padding-top: 142px; padding-bottom: 120px; }
   .page-hero-copy { max-width: none; }
   .display-title, .page-hero h1 { font-size: clamp(48px,10.5vw,76px); max-width: 760px; }
   .page-hero-art { width: min(520px, 92%); justify-self: end; }
@@ -2277,20 +2277,64 @@ body[data-page="contact"] .contact-form .button-dark { background: #fff !importa
 body[data-page="contact"] .contact-form .button-dark i { background: #07090e !important; color: #fff !important; }
 
 @media (max-width: 900px) {
-  .page-hero-copy { padding-right: 0; max-width: 100%; }
-  .page-hero-grid { padding-top: 130px; padding-bottom: 120px !important; }
+  .page-hero {
+    min-height: clamp(560px, 76svh, 720px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .page-hero-copy {
+    padding-right: 0;
+    max-width: 100%;
+    margin-bottom: clamp(28px, 4.5vh, 48px);
+  }
+  .page-hero-grid {
+    padding-top: clamp(130px, 16vh, 155px);
+    padding-bottom: clamp(140px, 18vh, 175px) !important;
+  }
   .page-hero-art {
-    right: 22px !important;
-    bottom: 44px !important;
-    width: clamp(100px, 20vw, 130px) !important;
+    right: clamp(20px, 5vw, 32px) !important;
+    bottom: clamp(54px, 7.5vh, 76px) !important;
+    width: clamp(96px, 18vw, 126px) !important;
+    z-index: 8 !important;
+  }
+  .page-hero + section,
+  .case-hero + section,
+  body[data-page="contact"] .page-hero + .contact-section {
+    margin-top: -24px !important;
+    border-radius: 28px 28px 0 0 !important;
+  }
+  .page-hero + section,
+  .case-hero + section {
+    padding-top: clamp(48px, 7vw, 76px);
   }
   .page-orbit-line-a { width: 720px; height: 320px; right: -315px; bottom: -180px; }
   .page-orbit-line-b { width: 900px; height: 420px; right: -405px; bottom: -242px; }
   .page-scroll-cue { display: none; }
 }
 @media (max-width: 560px) {
-  .page-hero-grid { padding-top: 120px; padding-bottom: 110px !important; }
-  .page-hero-art { right: 20px !important; bottom: 38px !important; width: clamp(94px, 22vw, 118px) !important; }
+  .page-hero {
+    min-height: clamp(520px, 72svh, 640px);
+  }
+  .page-hero-grid {
+    padding-top: clamp(120px, 14vh, 140px);
+    padding-bottom: clamp(130px, 16vh, 160px) !important;
+  }
+  .page-hero-copy {
+    margin-bottom: clamp(24px, 4vh, 40px);
+  }
+  .page-hero-art {
+    right: 18px !important;
+    bottom: clamp(48px, 6.5vh, 66px) !important;
+    width: clamp(88px, 22vw, 112px) !important;
+    z-index: 8 !important;
+  }
+  .page-hero + section,
+  .case-hero + section,
+  body[data-page="contact"] .page-hero + .contact-section {
+    margin-top: -20px !important;
+    border-radius: 24px 24px 0 0 !important;
+  }
   .page-orbit-line-a { width: 580px; height: 260px; right: -300px; bottom: -150px; }
   .page-orbit-line-b { width: 730px; height: 340px; right: -380px; bottom: -205px; }
   .signal-card,

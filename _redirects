@@ -5,3 +5,6 @@
 # Redirect /index.html and any folder/index.html to clean URL routes
 /index.html     /               301!
 /*/index.html   /:splat/        301!
+
+# Custom 404 Not Found fallback
+/*              /404.html       404

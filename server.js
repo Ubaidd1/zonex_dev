@@ -80,29 +80,14 @@ const server = http.createServer((req, res) => {
 
   if (!targetFile) {
     console.log(`[${timestamp}] 404 ${req.method} ${pathname}`);
+    const notFoundPath = path.join(ROOT_DIR, '404.html');
+    if (fs.existsSync(notFoundPath)) {
+      res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.end(fs.readFileSync(notFoundPath));
+      return;
+    }
     res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-    res.end(`<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>404 - Page Not Found | ZonexDev</title>
-  <link rel="stylesheet" href="/styles.css">
-  <style>
-    body { background: #03060d; color: #fff; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: system-ui, -apple-system, sans-serif; text-align: center; margin: 0; }
-    .error-container { max-width: 500px; padding: 2rem; }
-    h1 { font-size: 4rem; margin: 0 0 1rem; color: #6366f1; }
-    p { color: #94a3b8; line-height: 1.6; margin-bottom: 2rem; }
-    a { display: inline-block; background: #6366f1; color: #fff; padding: 0.75rem 1.75rem; border-radius: 9999px; text-decoration: none; font-weight: 500; }
-  </style>
-</head>
-<body>
-  <div class="error-container">
-    <h1>404</h1>
-    <p>The route <code>${pathname}</code> could not be found.</p>
-    <a href="/">Return Home</a>
-  </div>
-</body>
-</html>`);
+    res.end('<h1>404 Not Found</h1>');
     return;
   }
 

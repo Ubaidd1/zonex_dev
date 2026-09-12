@@ -14,3 +14,6 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
 RewriteRule ^(.*)$ /$1/ [L]
+
+# Custom 404 Not Found Page
+ErrorDocument 404 /404.html
